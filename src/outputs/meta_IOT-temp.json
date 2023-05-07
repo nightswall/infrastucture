@@ -1,0 +1,59 @@
+{
+    "dataset_name": "IOT-temp",
+    "meta_columns": {
+        "room_id/id": {
+            "STR": {
+                "occurrence": 97606,
+                "keywords": {
+                    "Room Admin": 1.0
+                }
+            },
+            "INT": null,
+            "NUMBER": null,
+            "DATE": null,
+            "name": "room_id/id",
+            "number_of_rows": 97606
+        },
+        "noted_date": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": null,
+            "DATE": {
+                "occurrence": 97606,
+                "min": 1532750760.0,
+                "max": 1544250600.0,
+                "min_str": "2018-07-28T07:06:00",
+                "max_str": "2018-12-08T09:30:00"
+            },
+            "name": "noted_date",
+            "number_of_rows": 97606
+        },
+        "temp": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 97606,
+                "min": 21.0,
+                "max": 51.0,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "temp",
+            "number_of_rows": 97606
+        },
+        "out/in": {
+            "STR": {
+                "occurrence": 97606,
+                "keywords": {
+                    "In": 0.208,
+                    "Out": 0.792
+                }
+            },
+            "INT": null,
+            "NUMBER": null,
+            "DATE": null,
+            "name": "out/in",
+            "number_of_rows": 97606
+        }
+    }
+}

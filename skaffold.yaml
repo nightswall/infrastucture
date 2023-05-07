@@ -1,0 +1,24 @@
+apiVersion: skaffold/v3
+kind: Config
+metadata:
+  name: iotstack
+build:
+  artifacts:
+  - image: mosquitto
+    context: templates/mosquitto
+    docker:
+      dockerfile: Dockerfile
+      buildArgs: 
+        MOSQUITTO_BASE: "eclipse-mosquitto:latest"
+
+  - image: nodered
+    context: services/nodered
+    docker:
+      dockerfile: Dockerfile
+      buildArgs: 
+        DOCKERHUB_TAG: latest
+        EXTRA_PACKAGES: ""
+
+manifests:
+  rawYaml:
+  - ./k8s/*.yaml

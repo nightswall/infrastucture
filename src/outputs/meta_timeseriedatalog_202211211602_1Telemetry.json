@@ -1,0 +1,162 @@
+{
+    "dataset_name": "timeseriedatalog_202211211602_1Telemetry",
+    "meta_columns": {
+        "date": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": null,
+            "DATE": {
+                "occurrence": 3879,
+                "min": 1668409149.357,
+                "max": 1669024807.238,
+                "min_str": "2022-11-14T09:59:09.357000",
+                "max_str": "2022-11-21T13:00:07.238000"
+            },
+            "name": "date",
+            "number_of_rows": 3879
+        },
+        "assetid": {
+            "STR": {
+                "occurrence": 3879,
+                "keywords": {
+                    "4a8b49a1-05dc-4667-5998-08dac15b184a": 1.0
+                }
+            },
+            "INT": null,
+            "NUMBER": null,
+            "DATE": null,
+            "name": "assetid",
+            "number_of_rows": 3879
+        },
+        "assetname": {
+            "STR": {
+                "occurrence": 3879,
+                "keywords": {
+                    "Divan": 1.0
+                }
+            },
+            "INT": null,
+            "NUMBER": null,
+            "DATE": null,
+            "name": "assetname",
+            "number_of_rows": 3879
+        },
+        "telemetryid": {
+            "STR": {
+                "occurrence": 3879,
+                "keywords": {
+                    "28e6f516-c5a1-48c9-44dc-08dab1cb22a9": 1.0
+                }
+            },
+            "INT": null,
+            "NUMBER": null,
+            "DATE": null,
+            "name": "telemetryid",
+            "number_of_rows": 3879
+        },
+        "telemetryname": {
+            "STR": {
+                "occurrence": 3879,
+                "keywords": {
+                    "Divan Sicaklik 1": 1.0
+                }
+            },
+            "INT": null,
+            "NUMBER": null,
+            "DATE": null,
+            "name": "telemetryname",
+            "number_of_rows": 3879
+        },
+        "containerid": {
+            "STR": {
+                "occurrence": 3879,
+                "keywords": {
+                    "/cim-sp1_d06de686-be8e-4504-070c-08da59c702e6/cnt_6d1b8ede-e70d-4132-a296-5436d235d455": 1.0
+                }
+            },
+            "INT": null,
+            "NUMBER": null,
+            "DATE": null,
+            "name": "containerid",
+            "number_of_rows": 3879
+        },
+        "sensorid": {
+            "STR": {
+                "occurrence": 3879,
+                "keywords": {
+                    "00000000-0000-0000-0000-000000000000": 1.0
+                }
+            },
+            "INT": null,
+            "NUMBER": null,
+            "DATE": null,
+            "name": "sensorid",
+            "number_of_rows": 3879
+        },
+        "value": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 3879,
+                "min": 23.96,
+                "max": 27.94,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "value",
+            "number_of_rows": 3879
+        },
+        "valueasstr": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 3879,
+                "min": 23.96,
+                "max": 27.94,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "valueasstr",
+            "number_of_rows": 3879
+        },
+        "datatype": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 3879,
+                "min": 0.0,
+                "max": 0.0,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "datatype",
+            "number_of_rows": 3879
+        },
+        "tenantid": {
+            "STR": {
+                "occurrence": 3879,
+                "keywords": {
+                    "d06de686-be8e-4504-070c-08da59c702e6": 1.0
+                }
+            },
+            "INT": null,
+            "NUMBER": null,
+            "DATE": null,
+            "name": "tenantid",
+            "number_of_rows": 3879
+        },
+        "timeseriedataloglabelrelationid": {
+            "STR": {
+                "occurrence": 3879,
+                "keywords": {
+                    "": 1.0
+                }
+            },
+            "INT": null,
+            "NUMBER": null,
+            "DATE": null,
+            "name": "timeseriedataloglabelrelationid",
+            "number_of_rows": 3879
+        }
+    }
+}

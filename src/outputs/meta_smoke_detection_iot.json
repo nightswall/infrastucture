@@ -1,0 +1,201 @@
+{
+    "dataset_name": "smoke_detection_iot",
+    "meta_columns": {
+        "UTC": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": null,
+            "DATE": {
+                "occurrence": 62630,
+                "min": 1654712187,
+                "max": 1655130051,
+                "min_str": "2022-06-08T21:16:27",
+                "max_str": "2022-06-13T17:20:51"
+            },
+            "name": "UTC",
+            "number_of_rows": 62630
+        },
+        "Temperature[C]": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 62630,
+                "min": -22.01,
+                "max": 59.93,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "Temperature[C]",
+            "number_of_rows": 62630
+        },
+        "Humidity[%]": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 62630,
+                "min": 10.74,
+                "max": 75.2,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "Humidity[%]",
+            "number_of_rows": 62630
+        },
+        "TVOC[ppb]": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 62630,
+                "min": 0.0,
+                "max": 60000.0,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "TVOC[ppb]",
+            "number_of_rows": 62630
+        },
+        "eCO2[ppm]": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 62630,
+                "min": 400.0,
+                "max": 60000.0,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "eCO2[ppm]",
+            "number_of_rows": 62630
+        },
+        "Raw H2": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 62630,
+                "min": 10668.0,
+                "max": 13803.0,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "Raw H2",
+            "number_of_rows": 62630
+        },
+        "Raw Ethanol": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 62630,
+                "min": 15317.0,
+                "max": 21410.0,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "Raw Ethanol",
+            "number_of_rows": 62630
+        },
+        "Pressure[hPa]": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 62630,
+                "min": 930.852,
+                "max": 939.861,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "Pressure[hPa]",
+            "number_of_rows": 62630
+        },
+        "PM1.0": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 62630,
+                "min": 0.0,
+                "max": 14333.69,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "PM1.0",
+            "number_of_rows": 62630
+        },
+        "PM2.5": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 62630,
+                "min": 0.0,
+                "max": 45432.26,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "PM2.5",
+            "number_of_rows": 62630
+        },
+        "NC0.5": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 62630,
+                "min": 0.0,
+                "max": 61482.03,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "NC0.5",
+            "number_of_rows": 62630
+        },
+        "NC1.0": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 62630,
+                "min": 0.0,
+                "max": 51914.68,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "NC1.0",
+            "number_of_rows": 62630
+        },
+        "NC2.5": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 62630,
+                "min": 0.0,
+                "max": 30026.438,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "NC2.5",
+            "number_of_rows": 62630
+        },
+        "CNT": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 62630,
+                "min": 0.0,
+                "max": 24993.0,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "CNT",
+            "number_of_rows": 62630
+        },
+        "Fire Alarm": {
+            "STR": null,
+            "INT": null,
+            "NUMBER": {
+                "occurrence": 62630,
+                "min": 0.0,
+                "max": 1.0,
+                "avg": null
+            },
+            "DATE": null,
+            "name": "Fire Alarm",
+            "number_of_rows": 62630
+        }
+    }
+}

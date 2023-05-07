@@ -1,0 +1,151 @@
+#!/bin/bash
+source ~/.bashrc
+function main
+{
+	initScript "$@"
+	service=$1
+	action=$2
+
+
+	if [[ $action == 'create' ]]; then
+
+		# create cluster-role-binding
+		kubectl create -f rbac-config.yaml
+		kubectl create serviceaccount --namespace kube-system tiller
+		kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+		kubectl create namespace tick
+
+		# create kube state metrics
+		kubectl apply -f kube-state-metrics/
+		
+		# Initiaize the helm in the cluster
+		# helm init 
+		# sleep 20;
+		
+		# create tiller deploy patched
+		kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'      
+		kubectl create serviceaccount --namespace kube-system tiller
+		
+		# create charts
+		create_chart $service
+	elif [[ $action == 'destroy' ]]; then
+		# destroy charts
+		destroy_chart $service
+	else
+		echo "Action is not valid !!!"
+	fi	
+}
+
+function create_chart
+{
+	service=$1
+	action=$2
+
+	influx_port=30082
+	kapacitor_port=30083
+	chronograf_port=30088
+
+	# Replace Any NodeIP/URL
+	cluster_name="tickstackcluster.com"
+	kubectl config set-context $(kubectl config current-context) --namespace=tick
+
+	
+	echo "Creating chart for" $service
+	if [ $service == "influxdb" ] || [ $service == "all" ]; then
+		# Deploying Influxdb service
+		echo Deploying Influxdb .....
+		helm install data --namespace tick influxdb
+		sleep 15;	
+		printf "\n\n=======================================================================\n"
+		echo "Influxdb Endpoint URL:" $cluster_name:$influx_port
+		printf "\n\n=======================================================================\n"	
+	fi
+
+	if [ $service == "kapacitor" ] || [ $service == "all" ]; then
+		# Deploying kapacitor service
+		echo Deploying Kapacitor .....
+        helm install   alerts --namespace tick kapacitor
+		sleep 15;
+		printf "\n\n=======================================================================\n"
+		echo "Kapacitor Endpoint URL:" $cluster_name:$kapacitor_port
+		printf "\n\n=======================================================================\n"
+	fi
+		
+	if [ $service == "telegraf-s" ] || [ $service == "all" ]; then
+		# Deploying telegraf-ds service
+		echo Deploying telegraf-s .....
+	 	helm install   polling --namespace tick telegraf-s
+		
+	fi	
+
+	if [ $service == "telegraf-ds" ] || [ $service == "all" ]; then
+		# Deploying telegraf-ds service
+		echo Deploying telegraf-s .....
+	 	helm install   hosts --namespace tick telegraf-ds
+	fi
+
+	if [ $service == "chronograf" ] || [ $service == "all" ]; then
+		# Deploying chronograf service
+		echo Deploying Chronograf .....
+		helm install   dash --namespace tick chronograf
+		sleep 60;
+		create_dashboard
+		printf "\n\n=======================================================================\n"
+		echo "Chronograf Endpoint URL:" $cluster_name:$chronograf_port
+		printf "\n\n=======================================================================\n"
+	fi	
+
+	if [ $service == "all" ]; then
+		printf "\n\n=======================================================================\n"
+		echo "Influxdb Endpoint URL:" $cluster_name:$influx_port
+		echo "Chronograf Endpoint URL:" $cluster_name:$chronograf_port
+		echo "Kapacitor Endpoint URL:" $cluster_name:$kapacitor_port
+		printf "\n=======================================================================\n"
+	fi
+}
+
+function create_dashboard
+{
+	
+	DST=http://$cluster_name:30088/chronograf/v1/dashboards
+	cd ./chronograf/dashboards/common
+    	
+    for file in *
+    do
+	   	curl -X POST -H "Accept: application/json" -d @$(basename "$file") $DST;
+	done
+
+	cd ../oss-k8s/
+
+    for file in *
+    do
+        curl -X POST -H "Accept: application/json" -d @$(basename "$file") $DST;
+    done
+
+}
+
+
+function destroy_chart
+{
+	service=$1
+	echo "Destorying chart of" $service
+	if [ $service == "influxdb" ]; then
+		helm delete data 
+	elif [ $service == "kapacitor" ]; then
+		helm delete alerts 	
+	elif [ $service == "chronograf" ]; then
+		helm delete dash 
+	elif [ $service == "telegraf-s" ]; then
+		helm delete polling 
+	elif [ $service == "telegraf-ds" ]; then
+		helm delete hosts
+	else	
+		helm delete data alerts dash polling hosts
+	fi
+}
+
+function initScript
+{
+	echo "Tick charts for oss-k8s"	
+}
+main "$@"
