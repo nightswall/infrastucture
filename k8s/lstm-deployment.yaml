@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpu-lstm-deployment
+spec:
+  selector:
+    matchLabels:
+      app: gpu-lstm
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: gpu-lstm
+        io.kompose.network: "true"
+    spec:
+      containers:
+      - name: lstm-container
+        image: gpu-lstm
+        resources:
+          limits:
+            nvidia.com/gpu: 1 # requesting 1 GPU
+        ports:
+        - containerPort: 8000
+        securityContext:
+          seccompProfile:
+            type: Unconfined
+      restartPolicy: Always
+

@@ -1,0 +1,39 @@
+apiVersion: skaffold/v4beta5
+kind: Config
+metadata:
+  name: infrastructure
+build:
+ artifacts:
+  - image: gpu-lstm
+    context: images/lstm
+    docker:
+      dockerfile: Dockerfile
+  - image: mosquitto
+    context: images/mosquitto
+    docker:
+      dockerfile: Dockerfile
+      buildArgs: 
+      MOSQUITTO_BASE: "eclipse-mosquitto:latest"
+  - image: nodered
+    context: images/nodered
+    docker:
+      dockerfile: Dockerfile
+      buildArgs: 
+        DOCKERHUB_TAG: latest
+        EXTRA_PACKAGES: ""
+deploy:
+  helm:
+    releases:
+      - name: telegraf-ds
+        chartPath: k8s/telegraf-ds
+        valuesFiles:
+          - k8s/telegraf-ds/values.yaml
+        version: 1.1.10
+      - name: influxdb2
+        chartPath: k8s/influxdb2
+        valuesFiles:
+          - k8s/influxdb2/values.yaml
+        version: 2.1.1
+manifests:
+  rawYaml:
+  - ./k8s/*.yaml
